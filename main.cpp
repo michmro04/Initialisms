@@ -4,6 +4,22 @@
 
 using namespace std;
 
+string createInitialism(const string& str){
+    string result = "";
+    bool newWord = true;
+
+    for (char c : str){
+        if(isspace(static_cast<unsigned char>(c))){
+            newWord = true;
+        }else if(newWord && isalpha(static_cast<unsigned char>(c))){
+            result+=static_cast<char>(toupper(static_cast<unsigned char>(c)));
+            newWord = false;
+        }
+    }
+    return result;
+}
+
+
 int main(){
 
     char letters[256];
@@ -11,31 +27,14 @@ int main(){
     cout << "Enter a string:" << endl;
     cin.getline(letters, 256);
     
-    cout <<"Initialism:"<<endl;
-    int i = 0;
-
-    //skip spaces at the beginning of the string
-    while(beginningAchieved == false && letters[i] == ' '){
-        i++;
-    }
-    beginningAchieved = true;    //we found the first char of the string
-    cout<< (char)toupper(letters[i]); // first char of the string is printed in uppercase
-
-    while(letters[i] != ' ' && letters[i] != '\0'){ 
-        i++; //skip the letters in the word
-        if(letters[i] == ' '){
-            i++; //skip the space
-            cout<< (char)toupper(letters[i]);
-        }
-    }
-
-    cout << endl;
-
+    cout << "Initialism of: " << letters << "\"" << endl;
+    cout << createInitialism(letters) << endl;
     return 0;
 }
 
 /*
+g++ main.cpp -o app.exe
 
-  example input to test this program
+ example input to test this program
 
 */
