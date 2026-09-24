@@ -33,8 +33,11 @@ int main(){
 }
 
 /*
+
 g++ main.cpp -o app.exe
+
 
  example input to test this program
 
+ 
 */
